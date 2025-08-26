@@ -19,6 +19,20 @@ const eslintConfig = [
       "build/**",
       "next-env.d.ts",
     ],
+
+    plugins: ["prettier"],
+
+    rules: {
+      "prettier/prettier": ["error"],
+
+      semi: ["error", "always"],
+      quotes: ["error", "single", { avoidEscape: true }],
+      "comma-dangle": ["error", "only-multiline"],
+      "no-console": ["warn"],
+
+      "react/react-in-jsx-scope": "off",
+      "react/jsx-uses-react": "off",
+    },
   },
 ];
 
