@@ -1,3 +1,5 @@
+import NavLink from '@/components/NavLink';
+
 export default function Home() {
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
@@ -6,11 +8,11 @@ export default function Home() {
           Welcome to <span className="text-amber-700">Game Together</span>
         </h1>
 
-        <ul className="font-mono list-inside text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">Chess</li>
-          <li className="mb-2 tracking-[-.01em]">Checkers</li>
-          <li className="mb-2 tracking-[-.01em]">Mill</li>
-          <li className="mb-2 tracking-[-.01em]">Dots and Boxes</li>
+        <ul className="font-mono list-inside text-sm/6 text-center sm:text-left space-y-3">
+          <NavLink href={'/games/chess'}>Chess</NavLink>
+          <NavLink href={'/games/checkers'}>Checkers</NavLink>
+          <NavLink href={'/games/mill'}>Mill</NavLink>
+          <NavLink href={'/games/dotsandboxes'}>Dots and Boxes</NavLink>
         </ul>
       </main>
     </div>
