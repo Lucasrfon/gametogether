@@ -13,6 +13,8 @@ export default function Home() {
           <NavLink href={'/games/checkers'}>Checkers</NavLink>
           <NavLink href={'/games/mill'}>Mill</NavLink>
           <NavLink href={'/games/dotsandboxes'}>Dots and Boxes</NavLink>
+          <NavLink href={'/games/tictactoe'}>Tic Tac Toe</NavLink>
+          <NavLink href={'/games/connectfour'}>Connect Four</NavLink>
         </ul>
       </main>
     </div>
