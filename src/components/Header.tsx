@@ -14,13 +14,13 @@ export default function Header() {
           Home
         </Link>
         <Link href="/info" className="hover:text-blue-600">
-          About us
+          About Project
         </Link>
         <Link href="/support" className="hover:text-blue-600">
-          Support us
+          Insert Coin
         </Link>
         <Link href="/contact" className="hover:text-blue-600">
-          Contact us
+          Contact
         </Link>
       </nav>
     </header>
