@@ -6,6 +6,7 @@ type Player = 1 | 2;
 export default function DotsAndBoxesBoard() {
   const [size, setSize] = useState<number | null>(null); // começa sem tamanho
   const [lines, setLines] = useState<{ [key: string]: Player }>({});
+  const [boxes, setBoxes] = useState<{ [key: string]: Player }>({});
   const [player, setPlayer] = useState<Player>(1); // true = jogador 1, false = jogador 2
 
   function handleStart(event: React.FormEvent<HTMLFormElement>) {
@@ -70,7 +71,12 @@ export default function DotsAndBoxesBoard() {
 
       if (topBox || bottomBox) {
         // jogador marca novamente
-        console.log('box completed by player', player);
+        setBoxes((prev) => ({
+          ...prev,
+          ...(topBox ? { [`${row - 1}-${col}`]: player } : {}),
+          ...(bottomBox ? { [`${row + 1}-${col}`]: player } : {}),
+        }));
+        console.log('box completed by player', boxes);
       } else {
         // troca de jogador
         setPlayer(player === 1 ? 2 : 1);
@@ -92,6 +98,11 @@ export default function DotsAndBoxesBoard() {
 
       if (leftBox || rightBox) {
         // jogador marca novamente
+        setBoxes((prev) => ({
+          ...prev,
+          ...(leftBox ? { [`${row}-${col - 1}`]: player } : {}),
+          ...(rightBox ? { [`${row}-${col + 1}`]: player } : {}),
+        }));
         console.log('box completed by player', player);
       } else {
         // troca de jogador
@@ -109,6 +120,11 @@ export default function DotsAndBoxesBoard() {
   function getLineColor(key: string) {
     if (!lines[key]) return 'bg-transparent hover:bg-gray-300';
     return lines[key] === 1 ? 'bg-blue-600' : 'bg-green-600';
+  }
+
+  function getBoxColor(key: string) {
+    if (!boxes[key]) return 'bg-transparent';
+    return boxes[key] === 1 ? 'bg-blue-700' : 'bg-green-700';
   }
 
   return (
@@ -161,8 +177,10 @@ export default function DotsAndBoxesBoard() {
             return (
               <div
                 key={key}
-                className="w-8 h-8 flex justify-center items-center"
-              ></div>
+                className="w-full h-full flex justify-center items-center"
+              >
+                <div className={`w-6 h-6 rounded-full ${getBoxColor(key)}`} />
+              </div>
             );
           })
         )}
