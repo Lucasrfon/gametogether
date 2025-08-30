@@ -128,9 +128,9 @@ export default function DotsAndBoxesBoard() {
   }
 
   return (
-    <div className="flex p-7 items-center justify-center min-h-screen">
+    <div className="flex items-center justify-center min-h-screen">
       <div
-        className="inline-grid gap-1"
+        className="inline-grid h-[750px] w-[750px]"
         style={{ gridTemplateColumns: `repeat(${gridSize}, auto)` }}
       >
         {Array.from({ length: gridSize }).map((_, row) =>
@@ -145,7 +145,7 @@ export default function DotsAndBoxesBoard() {
               return (
                 <div
                   key={key}
-                  className="w-2 h-2 bg-black rounded-full place-self-center"
+                  className="w-4 h-4 bg-white rounded-full place-self-center"
                 />
               );
             }
@@ -155,7 +155,7 @@ export default function DotsAndBoxesBoard() {
                 <div
                   key={key}
                   onClick={() => putLine(key)}
-                  className={`h-1 w-8 cursor-pointer transition-colors place-self-center ${getLineColor(
+                  className={`h-3 w-full cursor-pointer transition-colors place-self-center ${getLineColor(
                     key
                   )}`}
                 />
@@ -167,7 +167,7 @@ export default function DotsAndBoxesBoard() {
                 <div
                   key={key}
                   onClick={() => putLine(key)}
-                  className={`w-1 h-8 cursor-pointer transition-colors place-self-center ${getLineColor(
+                  className={`w-3 h-full cursor-pointer transition-colors place-self-center ${getLineColor(
                     key
                   )}`}
                 />
@@ -179,7 +179,7 @@ export default function DotsAndBoxesBoard() {
                 key={key}
                 className="w-full h-full flex justify-center items-center"
               >
-                <div className={`w-6 h-6 rounded-full ${getBoxColor(key)}`} />
+                <div className={`w-10 h-10 rounded-full ${getBoxColor(key)}`} />
               </div>
             );
           })
