@@ -11,11 +11,11 @@ export default function Contact() {
         {/* Cabeçalho */}
         <header>
           <h1 className="text-5xl font-extrabold tracking-tight text-white">
-            Vamos conversar?
+            Shall we talk?
           </h1>
           <p className="mt-4 text-lg text-gray-400">
-            Sinta-se à vontade para me encontrar nas redes ou enviar um e-mail,
-            seja para feedback ou outros assuntos.
+            Feel free to reach out to me on social media or send me an email,
+            whether for feedback or any other topics.
           </p>
         </header>
 
