@@ -8,6 +8,12 @@ export default function DotsAndBoxesBoard() {
   const [lines, setLines] = useState<{ [key: string]: Player }>({});
   const [boxes, setBoxes] = useState<{ [key: string]: Player }>({});
   const [player, setPlayer] = useState<Player>(1); // true = jogador 1, false = jogador 2
+  const player1Points = Object.values(boxes).filter(
+    (player) => player === 1
+  ).length;
+  const player2Points = Object.values(boxes).filter(
+    (player) => player === 2
+  ).length;
 
   function handleStart(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -128,7 +134,14 @@ export default function DotsAndBoxesBoard() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex items-center justify-around min-h-screen">
+      <div className="flex flex-col items-center bg-slate-800 text-white rounded-xl shadow-lg border border-slate-700 px-6 py-4 w-48">
+        <div className="text-lg font-semibold mb-1">Player 1</div>
+        <div className="text-3xl font-extrabold text-amber-400">
+          {player1Points}
+        </div>
+      </div>
+
       <div
         className="inline-grid h-[750px] w-[750px]"
         style={{ gridTemplateColumns: `repeat(${gridSize}, auto)` }}
@@ -184,6 +197,13 @@ export default function DotsAndBoxesBoard() {
             );
           })
         )}
+      </div>
+
+      <div className="flex flex-col items-center bg-slate-800 text-white rounded-xl shadow-lg border border-slate-700 px-6 py-4 w-48">
+        <div className="text-lg font-semibold mb-1">Player 2</div>
+        <div className="text-3xl font-extrabold text-amber-400">
+          {player2Points}
+        </div>
       </div>
     </div>
   );
