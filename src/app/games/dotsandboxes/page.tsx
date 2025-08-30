@@ -30,15 +30,16 @@ export default function DotsAndBoxesBoard() {
           onSubmit={handleStart}
           className="bg-gray-700 shadow-lg rounded-2xl p-6 flex flex-col gap-4"
         >
-          <label className="font-semibold text-amber-700">
-            Escolha o tamanho do tabuleiro:
+          <label className="font-semibold text-white">
+            Choose board size{' '}
+            <span className="text-amber-700">(5x5 to 10x10)</span>:
           </label>
           <input
             type="number"
             name="size"
-            min={6}
-            max={11}
-            defaultValue={6}
+            min={5}
+            max={10}
+            defaultValue={5}
             className="border rounded-lg px-3 py-2"
           />
           <button
@@ -52,7 +53,7 @@ export default function DotsAndBoxesBoard() {
     );
   }
 
-  if (player1Points + player2Points === (size - 1) * (size - 1)) {
+  if (player1Points + player2Points === size * size) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen gap-6">
         <h1 className="text-4xl font-bold text-amber-700">Game Over!</h1>
@@ -85,7 +86,7 @@ export default function DotsAndBoxesBoard() {
   }
 
   // Calcula grid a partir do size escolhido
-  const gridSize = size * 2 - 1;
+  const gridSize = size * 2 + 1;
 
   function checkBoxCompletion(key: string) {
     const row = parseInt(key.split('-')[0]);
