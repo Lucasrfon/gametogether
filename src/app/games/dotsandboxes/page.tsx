@@ -48,9 +48,62 @@ export default function DotsAndBoxesBoard() {
   // Calcula grid a partir do size escolhido
   const gridSize = size * 2 - 1;
 
+  function checkBoxCompletion(key: string) {
+    const row = parseInt(key.split('-')[0]);
+    const col = parseInt(key.split('-')[1]);
+
+    // linha horizontal
+    if (row % 2 === 0) {
+      //quadrado acima
+      const top = `${row - 2}-${col}`;
+      const topLeft = `${row - 1}-${col - 1}`;
+      const topRight = `${row - 1}-${col + 1}`;
+
+      //quadrado abaixo
+      const bottom = `${row + 2}-${col}`;
+      const bottomLeft = `${row + 1}-${col - 1}`;
+      const bottomRight = `${row + 1}-${col + 1}`;
+
+      const topBox = lines[top] && lines[topLeft] && lines[topRight];
+      const bottomBox =
+        lines[bottom] && lines[bottomLeft] && lines[bottomRight];
+
+      if (topBox || bottomBox) {
+        // jogador marca novamente
+        console.log('box completed by player', player);
+      } else {
+        // troca de jogador
+        setPlayer(player === 1 ? 2 : 1);
+      }
+      // linha vertical
+    } else {
+      //quadrado esquerda
+      const left = `${row}-${col - 2}`;
+      const leftTop = `${row - 1}-${col - 1}`;
+      const leftBottom = `${row + 1}-${col - 1}`;
+
+      //quadrado direita
+      const right = `${row}-${col + 2}`;
+      const rightTop = `${row - 1}-${col + 1}`;
+      const rightBottom = `${row + 1}-${col + 1}`;
+
+      const leftBox = lines[left] && lines[leftTop] && lines[leftBottom];
+      const rightBox = lines[right] && lines[rightTop] && lines[rightBottom];
+
+      if (leftBox || rightBox) {
+        // jogador marca novamente
+        console.log('box completed by player', player);
+      } else {
+        // troca de jogador
+        setPlayer(player === 1 ? 2 : 1);
+      }
+    }
+  }
+
   function putLine(key: string) {
+    if (lines[key]) return; // linha já marcada
     setLines((prev) => ({ ...prev, [key]: player }));
-    setPlayer(player === 1 ? 2 : 1); // alterna jogador
+    checkBoxCompletion(key);
   }
 
   function getLineColor(key: string) {
