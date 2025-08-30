@@ -8,12 +8,12 @@ export default function DotsAndBoxesBoard() {
   const [lines, setLines] = useState<{ [key: string]: Player }>({});
   const [player, setPlayer] = useState<Player>(1); // true = jogador 1, false = jogador 2
 
-  const handleStart = (event: React.FormEvent<HTMLFormElement>) => {
+  function handleStart(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const chosenSize = Number(formData.get('size'));
     setSize(chosenSize);
-  };
+  }
 
   // Se o size ainda não foi escolhido → mostra o formulário
   if (size === null) {
@@ -29,9 +29,9 @@ export default function DotsAndBoxesBoard() {
           <input
             type="number"
             name="size"
-            min={5}
-            max={10}
-            defaultValue={5}
+            min={6}
+            max={11}
+            defaultValue={6}
             className="border rounded-lg px-3 py-2"
           />
           <button
@@ -48,20 +48,20 @@ export default function DotsAndBoxesBoard() {
   // Calcula grid a partir do size escolhido
   const gridSize = size * 2 - 1;
 
-  const putLine = (key: string) => {
+  function putLine(key: string) {
     setLines((prev) => ({ ...prev, [key]: player }));
     setPlayer(player === 1 ? 2 : 1); // alterna jogador
-  };
+  }
 
-  const getLineColor = (key: string) => {
+  function getLineColor(key: string) {
     if (!lines[key]) return 'bg-transparent hover:bg-gray-300';
     return lines[key] === 1 ? 'bg-blue-600' : 'bg-green-600';
-  };
+  }
 
   return (
     <div className="flex p-7 items-center justify-center min-h-screen">
       <div
-        className="inline-grid gap-2"
+        className="inline-grid gap-1"
         style={{ gridTemplateColumns: `repeat(${gridSize}, auto)` }}
       >
         {Array.from({ length: gridSize }).map((_, row) =>
