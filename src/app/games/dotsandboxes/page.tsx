@@ -43,11 +43,43 @@ export default function DotsAndBoxesBoard() {
           />
           <button
             type="submit"
-            className="bg-amber-700 text-white px-4 py-2 rounded-lg hover:bg-amber-800"
+            className="bg-amber-700 text-white px-4 py-2 rounded-lg hover:bg-amber-800 cursor-pointer"
           >
             Começar
           </button>
         </form>
+      </div>
+    );
+  }
+
+  if (player1Points + player2Points === (size - 1) * (size - 1)) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen gap-6">
+        <h1 className="text-4xl font-bold text-amber-700">Game Over!</h1>
+        <p className="text-xl">
+          {player1Points > player2Points
+            ? 'Player 1 won!'
+            : player2Points > player1Points
+              ? 'Player 2 won!'
+              : 'Empate!'}
+        </p>
+        <p className="text-lg">
+          Player 1:{' '}
+          <span className="text-blue-600"> {player1Points} boxes </span> |
+          Player 2:{' '}
+          <span className="text-green-600"> {player2Points} boxes </span>
+        </p>
+        <button
+          onClick={() => {
+            setSize(null);
+            setLines({});
+            setBoxes({});
+            setPlayer(1);
+          }}
+          className="bg-amber-700 text-white px-4 py-2 rounded-lg hover:bg-amber-800 cursor-pointer"
+        >
+          Play Again?
+        </button>
       </div>
     );
   }
@@ -82,7 +114,6 @@ export default function DotsAndBoxesBoard() {
           ...(topBox ? { [`${row - 1}-${col}`]: player } : {}),
           ...(bottomBox ? { [`${row + 1}-${col}`]: player } : {}),
         }));
-        console.log('box completed by player', boxes);
       } else {
         // troca de jogador
         setPlayer(player === 1 ? 2 : 1);
@@ -109,7 +140,6 @@ export default function DotsAndBoxesBoard() {
           ...(leftBox ? { [`${row}-${col - 1}`]: player } : {}),
           ...(rightBox ? { [`${row}-${col + 1}`]: player } : {}),
         }));
-        console.log('box completed by player', player);
       } else {
         // troca de jogador
         setPlayer(player === 1 ? 2 : 1);
@@ -137,7 +167,7 @@ export default function DotsAndBoxesBoard() {
     <div className="flex items-center justify-around min-h-screen">
       <div className="flex flex-col items-center bg-slate-800 text-white rounded-xl shadow-lg border border-slate-700 px-6 py-4 w-48">
         <div className="text-lg font-semibold mb-1">Player 1</div>
-        <div className="text-3xl font-extrabold text-amber-400">
+        <div className="text-3xl font-extrabold text-blue-600">
           {player1Points}
         </div>
       </div>
@@ -201,7 +231,7 @@ export default function DotsAndBoxesBoard() {
 
       <div className="flex flex-col items-center bg-slate-800 text-white rounded-xl shadow-lg border border-slate-700 px-6 py-4 w-48">
         <div className="text-lg font-semibold mb-1">Player 2</div>
-        <div className="text-3xl font-extrabold text-amber-400">
+        <div className="text-3xl font-extrabold text-green-600">
           {player2Points}
         </div>
       </div>
