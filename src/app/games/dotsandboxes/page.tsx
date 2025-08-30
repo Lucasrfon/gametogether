@@ -7,7 +7,8 @@ export default function DotsAndBoxesBoard() {
   const [size, setSize] = useState<number | null>(null); // começa sem tamanho
   const [lines, setLines] = useState<{ [key: string]: Player }>({});
   const [boxes, setBoxes] = useState<{ [key: string]: Player }>({});
-  const [player, setPlayer] = useState<Player>(1); // true = jogador 1, false = jogador 2
+  const [player, setPlayer] = useState<Player>(1);
+
   const player1Points = Object.values(boxes).filter(
     (player) => player === 1
   ).length;
@@ -155,7 +156,10 @@ export default function DotsAndBoxesBoard() {
   }
 
   function getLineColor(key: string) {
-    if (!lines[key]) return 'bg-transparent hover:bg-gray-300';
+    if (!lines[key])
+      return player === 1
+        ? 'bg-transparent hover:bg-blue-400'
+        : 'bg-transparent hover:bg-green-400';
     return lines[key] === 1 ? 'bg-blue-600' : 'bg-green-600';
   }
 
@@ -166,7 +170,9 @@ export default function DotsAndBoxesBoard() {
 
   return (
     <div className="flex items-center justify-around min-h-screen">
-      <div className="flex flex-col items-center bg-slate-800 text-white rounded-xl shadow-lg border border-slate-700 px-6 py-4 w-48">
+      <div
+        className={`flex flex-col items-center bg-slate-800 text-white rounded-xl shadow-lg ${player === 1 ? 'shadow-stone-500' : ''} border border-slate-700 px-6 py-4 w-48`}
+      >
         <div className="text-lg font-semibold mb-1">Player 1</div>
         <div className="text-3xl font-extrabold text-blue-600">
           {player1Points}
@@ -230,7 +236,9 @@ export default function DotsAndBoxesBoard() {
         )}
       </div>
 
-      <div className="flex flex-col items-center bg-slate-800 text-white rounded-xl shadow-lg border border-slate-700 px-6 py-4 w-48">
+      <div
+        className={`flex flex-col items-center bg-slate-800 text-white rounded-xl shadow-lg ${player === 2 ? 'shadow-stone-500' : ''} border border-slate-700 px-6 py-4 w-48`}
+      >
         <div className="text-lg font-semibold mb-1">Player 2</div>
         <div className="text-3xl font-extrabold text-green-600">
           {player2Points}
