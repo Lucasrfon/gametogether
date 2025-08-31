@@ -8,13 +8,25 @@ export default function Home() {
           Welcome to <span className="text-[#ac1717]">Game Together</span>
         </h1>
 
-        <ul className="font-roboto list-inside text-sm/6 text-center sm:text-left space-y-4">
-          <NavLink href={'/games/chess'}>Chess</NavLink>
-          <NavLink href={'/games/checkers'}>Checkers</NavLink>
-          <NavLink href={'/games/mill'}>Mill</NavLink>
-          <NavLink href={'/games/dotsandboxes'}>Dots and Boxes</NavLink>
-          <NavLink href={'/games/tictactoe'}>Tic Tac Toe</NavLink>
-          <NavLink href={'/games/connectfour'}>Connect Four</NavLink>
+        <ul className="font-roboto list-inside text-lg text-center sm:text-left space-y-2">
+          <NavLink href={'/games/chess'} status="Soon">
+            Chess
+          </NavLink>
+          <NavLink href={'/games/checkers'} status="Soon">
+            Checkers
+          </NavLink>
+          <NavLink href={'/games/mill'} status="Soon">
+            Mill
+          </NavLink>
+          <NavLink href={'/games/dotsandboxes'} status="Done">
+            Dots and Boxes
+          </NavLink>
+          <NavLink href={'/games/tictactoe'} status="In Progress">
+            Tic Tac Toe
+          </NavLink>
+          <NavLink href={'/games/connectfour'} status="Soon">
+            Connect Four
+          </NavLink>
         </ul>
       </main>
     </div>
