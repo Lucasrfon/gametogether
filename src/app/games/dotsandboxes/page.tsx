@@ -29,7 +29,7 @@ export default function DotsAndBoxesBoard() {
       <div className="flex items-center justify-center min-h-screen">
         <form
           onSubmit={handleStart}
-          className="bg-gray-700 shadow-lg rounded-2xl p-6 flex flex-col gap-4"
+          className="bg-gray-700 shadow-lg rounded-2xl p-6 flex flex-col justify-center items-center gap-4"
         >
           <label className="font-semibold text-white">
             Choose board size{' '}
@@ -41,13 +41,13 @@ export default function DotsAndBoxesBoard() {
             min={5}
             max={10}
             defaultValue={5}
-            className="border rounded-lg px-3 py-2"
+            className="border rounded-lg w-full px-3 py-2"
           />
           <button
             type="submit"
-            className="bg-amber-700 text-white px-4 py-2 rounded-lg hover:bg-amber-800 cursor-pointer"
+            className="bg-amber-700 w-20 text-white px-4 py-2 rounded-lg hover:bg-amber-800 cursor-pointer"
           >
-            Começar
+            Start
           </button>
         </form>
       </div>

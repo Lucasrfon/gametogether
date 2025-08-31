@@ -11,7 +11,7 @@ export default function NavLink({ href, children }: NavLinkProps) {
     <li>
       <Link
         href={href}
-        className="mb-2 tracking-[-.01em] hover:text-amber-700 transition-all"
+        className="mb-2 tracking-[-.01em] p-2 rounded-lg hover:bg-[#ac1717] transition-all duration-200"
       >
         {children}
       </Link>

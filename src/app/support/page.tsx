@@ -37,7 +37,7 @@ export default function Support() {
         {/* Support button */}
         <div>
           <a
-            href="https://www.buymeacoffee.com/seuuser" // replace with your link
+            href=""
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-8 py-4 rounded-xl bg-yellow-500 text-black font-bold text-lg shadow-lg hover:bg-yellow-400 transition"
