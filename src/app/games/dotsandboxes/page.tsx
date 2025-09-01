@@ -1,4 +1,5 @@
 'use client';
+import { Button } from '@/components/ui/Button';
 import { useState } from 'react';
 
 type Player = 1 | 2;
@@ -31,7 +32,7 @@ export default function DotsAndBoxesBoard() {
           onSubmit={handleStart}
           className="bg-gray-700 shadow-lg rounded-2xl p-6 flex flex-col justify-center items-center gap-4"
         >
-          <label className="font-semibold text-white">
+          <label className="font-semibold">
             Choose board size{' '}
             <span className="text-amber-700">(5x5 to 10x10)</span>:
           </label>
@@ -43,12 +44,9 @@ export default function DotsAndBoxesBoard() {
             defaultValue={5}
             className="border rounded-lg w-full px-3 py-2"
           />
-          <button
-            type="submit"
-            className="bg-amber-700 w-20 text-white px-4 py-2 rounded-lg hover:bg-amber-800 cursor-pointer"
-          >
+          <Button type="submit" className="bg-amber-700">
             Start
-          </button>
+          </Button>
         </form>
       </div>
     );
@@ -71,17 +69,17 @@ export default function DotsAndBoxesBoard() {
           Player 2:{' '}
           <span className="text-green-600"> {player2Points} boxes </span>
         </p>
-        <button
+        <Button
           onClick={() => {
             setSize(null);
             setLines({});
             setBoxes({});
             setPlayer(1);
           }}
-          className="bg-amber-700 text-white px-4 py-2 rounded-lg hover:bg-amber-800 cursor-pointer"
+          className="bg-amber-700"
         >
           Play Again?
-        </button>
+        </Button>
       </div>
     );
   }
@@ -171,7 +169,7 @@ export default function DotsAndBoxesBoard() {
   return (
     <div className="flex items-center justify-around min-h-screen">
       <div
-        className={`flex flex-col items-center bg-slate-800 text-white rounded-xl shadow-lg ${player === 1 ? 'shadow-stone-500' : ''} border border-slate-700 px-6 py-4 w-48`}
+        className={`flex flex-col items-center bg-slate-800 rounded-xl shadow-lg ${player === 1 ? 'shadow-stone-500' : ''} border border-slate-700 px-6 py-4 w-48`}
       >
         <div className="text-lg font-semibold mb-1">Player 1</div>
         <div className="text-3xl font-extrabold text-blue-600">
@@ -237,7 +235,7 @@ export default function DotsAndBoxesBoard() {
       </div>
 
       <div
-        className={`flex flex-col items-center bg-slate-800 text-white rounded-xl shadow-lg ${player === 2 ? 'shadow-stone-500' : ''} border border-slate-700 px-6 py-4 w-48`}
+        className={`flex flex-col items-center bg-slate-800 rounded-xl shadow-lg ${player === 2 ? 'shadow-stone-500' : ''} border border-slate-700 px-6 py-4 w-48`}
       >
         <div className="text-lg font-semibold mb-1">Player 2</div>
         <div className="text-3xl font-extrabold text-green-600">

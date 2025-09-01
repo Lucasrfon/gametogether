@@ -34,7 +34,6 @@ export default function Support() {
           </p>
         </section>
 
-        {/* Support button */}
         <div>
           <a
             href=""
