@@ -1,5 +1,6 @@
 'use client';
 import { Button } from '@/components/ui/Button';
+import Score from '@/components/ui/Score';
 import { useState } from 'react';
 
 type Player = 1 | 2;
@@ -168,14 +169,11 @@ export default function DotsAndBoxesBoard() {
 
   return (
     <div className="flex items-center justify-around min-h-screen">
-      <div
-        className={`flex flex-col items-center bg-slate-800 rounded-xl shadow-lg ${player === 1 ? 'shadow-stone-500' : ''} border border-slate-700 px-6 py-4 w-48`}
-      >
-        <div className="text-lg font-semibold mb-1">Player 1</div>
-        <div className="text-3xl font-extrabold text-blue-600">
-          {player1Points}
-        </div>
-      </div>
+      <Score
+        player="Player 1"
+        points={player1Points}
+        className={player === 1 ? 'shadow-stone-500' : ''}
+      ></Score>
 
       <div
         className="inline-grid h-[750px] w-[750px]"
@@ -234,14 +232,11 @@ export default function DotsAndBoxesBoard() {
         )}
       </div>
 
-      <div
-        className={`flex flex-col items-center bg-slate-800 rounded-xl shadow-lg ${player === 2 ? 'shadow-stone-500' : ''} border border-slate-700 px-6 py-4 w-48`}
-      >
-        <div className="text-lg font-semibold mb-1">Player 2</div>
-        <div className="text-3xl font-extrabold text-green-600">
-          {player2Points}
-        </div>
-      </div>
+      <Score
+        player="Player 2"
+        points={player2Points}
+        className={player === 2 ? 'shadow-stone-500' : ''}
+      ></Score>
     </div>
   );
 }
