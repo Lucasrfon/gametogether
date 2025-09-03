@@ -13,11 +13,47 @@ export default function TicTacToeBoard() {
   const player1Points = points[1];
   const player2Points = points[2];
 
+  function checkwin(newBoard: (Player | null)[]) {
+    const winConditions = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+
+    for (const condition of winConditions) {
+      const [a, b, c] = condition;
+      if (
+        newBoard[a] &&
+        newBoard[a] === newBoard[b] &&
+        newBoard[a] === newBoard[c]
+      ) {
+        alert(`Player ${newBoard[a]} wins!`);
+        setPoints((prev) => ({
+          ...prev,
+          [newBoard[a]!]: prev[newBoard[a]!] + 1,
+        }));
+        setBoard(Array(9).fill(null));
+        return;
+      }
+    }
+
+    if (newBoard.every((cell) => cell !== null)) {
+      alert("It's a draw!");
+      setBoard(Array(9).fill(null));
+    }
+  }
+
   const handleClick = (index: number) => {
     if (board[index]) return; // já marcado
     const newBoard = [...board];
     newBoard[index] = player;
     setBoard(newBoard);
+    checkwin(newBoard);
     setPlayer(player === 1 ? 2 : 1);
   };
 
@@ -25,7 +61,7 @@ export default function TicTacToeBoard() {
     <div className="min-h-screen flex flex-col items-center justify-center gap-8">
       <h1 className="text-4xl font-bold mb-8 drop-shadow-lg">Tic Tac Toe</h1>
 
-      <div className="flex items-center justify-between w-full max-w-3xl px-4">
+      <div className="flex items-center justify-around min-w-full max-w-3xl px-4 gap-12">
         <Score
           player="Player 1"
           points={player1Points}
