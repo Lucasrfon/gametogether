@@ -72,16 +72,17 @@ export default function TicTacToeBoard() {
 
         <div className="grid grid-cols-3 gap-3 bg-gray-700 p-4 rounded-2xl">
           {board.map((cell, i) => (
-            <div
+            <button
               key={i}
+              disabled={!!result}
               onClick={() => handleClick(i)}
-              className="w-24 h-24 flex items-center justify-center text-4xl font-bold 
-                       bg-gray-900 rounded-xl 
-                       hover:scale-105 hover:bg-gray-600 transition-all duration-200 
-                       cursor-pointer select-none"
+              className={`w-24 h-24 flex items-center justify-center text-4xl font-bold 
+              bg-gray-900 rounded-xl 
+              transition-all duration-200 select-none 
+              ${!!result ? 'opacity-50' : 'cursor-pointer hover:scale-105 hover:bg-gray-600'}`}
             >
               {cell === 1 ? 'X' : cell === 2 ? 'O' : ''}
-            </div>
+            </button>
           ))}
         </div>
 
