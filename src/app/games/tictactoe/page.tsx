@@ -4,11 +4,13 @@ import Score from '@/components/ui/Score';
 import { useState } from 'react';
 
 type Player = 1 | 2;
+type Result = 'Player 1 wins' | 'Player 2 wins' | 'Draw' | null;
 
 export default function TicTacToeBoard() {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [player, setPlayer] = useState<Player>(1);
   const [points, setPoints] = useState({ 1: 0, 2: 0 });
+  const [result, setResult] = useState<Result>(null);
 
   const player1Points = points[1];
   const player2Points = points[2];
@@ -32,30 +34,30 @@ export default function TicTacToeBoard() {
         newBoard[a] === newBoard[b] &&
         newBoard[a] === newBoard[c]
       ) {
-        alert(`Player ${newBoard[a]} wins!`);
         setPoints((prev) => ({
           ...prev,
           [newBoard[a]!]: prev[newBoard[a]!] + 1,
         }));
-        setBoard(Array(9).fill(null));
+
+        setResult(newBoard[a] === 1 ? 'Player 1 wins' : 'Player 2 wins');
         return;
       }
     }
 
     if (newBoard.every((cell) => cell !== null)) {
-      alert("It's a draw!");
-      setBoard(Array(9).fill(null));
+      setResult('Draw');
+      return;
     }
   }
 
-  const handleClick = (index: number) => {
+  function handleClick(index: number) {
     if (board[index]) return; // já marcado
     const newBoard = [...board];
     newBoard[index] = player;
     setBoard(newBoard);
     checkwin(newBoard);
     setPlayer(player === 1 ? 2 : 1);
-  };
+  }
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center gap-8">
@@ -89,6 +91,20 @@ export default function TicTacToeBoard() {
           className={player === 2 ? 'shadow-stone-500' : ''}
         ></Score>
       </div>
+
+      {result && (
+        <div className="text-center">
+          <h2 className="text-2xl font-semibold mb-4">{result}</h2>
+          <Button
+            onClick={() => {
+              setBoard(Array(9).fill(null));
+              setResult(null);
+            }}
+          >
+            Play Again
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
