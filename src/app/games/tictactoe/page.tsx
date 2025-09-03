@@ -61,7 +61,7 @@ export default function TicTacToeBoard() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center gap-8">
-      <h1 className="text-4xl font-bold mb-8 drop-shadow-lg">Tic Tac Toe</h1>
+      <h1 className="text-4xl font-bold mb-8">Tic Tac Toe</h1>
 
       <div className="flex items-center justify-around min-w-full max-w-3xl px-4 gap-12">
         <Score
@@ -70,13 +70,13 @@ export default function TicTacToeBoard() {
           className={player === 1 ? 'shadow-stone-500' : ''}
         ></Score>
 
-        <div className="grid grid-cols-3 gap-3 bg-gray-700 p-4 rounded-2xl shadow-2xl">
+        <div className="grid grid-cols-3 gap-3 bg-gray-700 p-4 rounded-2xl">
           {board.map((cell, i) => (
             <div
               key={i}
               onClick={() => handleClick(i)}
               className="w-24 h-24 flex items-center justify-center text-4xl font-bold 
-                       bg-gray-900 rounded-xl shadow-md 
+                       bg-gray-900 rounded-xl 
                        hover:scale-105 hover:bg-gray-600 transition-all duration-200 
                        cursor-pointer select-none"
             >
@@ -92,19 +92,21 @@ export default function TicTacToeBoard() {
         ></Score>
       </div>
 
-      {result && (
-        <div className="text-center">
-          <h2 className="text-2xl font-semibold mb-4">{result}</h2>
-          <Button
-            onClick={() => {
-              setBoard(Array(9).fill(null));
-              setResult(null);
-            }}
-          >
-            Play Again
-          </Button>
-        </div>
-      )}
+      <div
+        className={`transition-all min-h-22 duration-300 text-center ${
+          result ? 'opacity-100 visible' : 'opacity-0 invisible'
+        }`}
+      >
+        <h2 className="text-2xl font-semibold mb-4">{result}</h2>
+        <Button
+          onClick={() => {
+            setBoard(Array(9).fill(null));
+            setResult(null);
+          }}
+        >
+          Play Again
+        </Button>
+      </div>
     </div>
   );
 }
