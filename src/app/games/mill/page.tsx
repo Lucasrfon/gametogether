@@ -81,6 +81,23 @@ export default function MillBoard() {
           className="absolute border-l-4 border-white"
           style={{ left: '50%', top: '75%', height: '25%' }}
         ></div>
+
+        {/* 24 pontos */}
+        {points.map(([top, left], i) => (
+          <div
+            key={i}
+            onClick={() => handleClick(i)}
+            className="absolute w-8 h-8 rounded-full bg-gray-600 hover:bg-red-600 cursor-pointer 
+                       flex items-center justify-center text-xl font-bold text-white transition"
+            style={{
+              top: `${top}%`,
+              left: `${left}%`,
+              transform: 'translate(-50%, -50%)',
+            }}
+          >
+            {positions[i]}
+          </div>
+        ))}
       </div>
     </div>
   );
