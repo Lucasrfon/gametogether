@@ -28,24 +28,24 @@ export default function MillBoard() {
     [100, 100],
 
     // Quadrado médio (8)
-    [12.5, 12.5],
-    [12.5, 50],
-    [12.5, 87.5],
-    [50, 12.5],
-    [50, 87.5],
-    [87.5, 12.5],
-    [87.5, 50],
-    [87.5, 87.5],
+    [17, 17],
+    [17, 50],
+    [17, 83],
+    [50, 17],
+    [50, 83],
+    [83, 17],
+    [83, 50],
+    [83, 83],
 
     // Quadrado interno (8)
-    [25, 25],
-    [25, 50],
-    [25, 75],
-    [50, 25],
-    [50, 75],
-    [75, 25],
-    [75, 50],
-    [75, 75],
+    [34, 34],
+    [34, 50],
+    [34, 66],
+    [50, 34],
+    [50, 66],
+    [66, 34],
+    [66, 50],
+    [66, 66],
   ];
 
   return (
@@ -55,31 +55,51 @@ export default function MillBoard() {
         <div className="absolute border-4 border-white inset-0"></div>
         <div
           className="absolute border-4 border-white"
-          style={{ inset: '12.5%' }}
+          style={{ inset: '34%' }}
         ></div>
         <div
           className="absolute border-4 border-white"
-          style={{ inset: '25%' }}
+          style={{ inset: '17%' }}
         ></div>
 
-        {/* Linhas de ligação (cantos ↔ cantos e meios ↔ meios) */}
-        {/* Horizontal esquerda */}
+        {/* Horizontal esquerda (externo → médio → interno) */}
         <div
           className="absolute border-t-4 border-white"
-          style={{ top: '50%', left: '0%', width: '25%' }}
+          style={{ top: '50%', left: '0%', width: '17%' }}
         ></div>
         <div
           className="absolute border-t-4 border-white"
-          style={{ top: '50%', left: '75%', width: '25%' }}
+          style={{ top: '50%', left: '17%', width: '17%' }}
         ></div>
+
+        {/* Horizontal direita */}
+        <div
+          className="absolute border-t-4 border-white"
+          style={{ top: '50%', left: '66%', width: '17%' }}
+        ></div>
+        <div
+          className="absolute border-t-4 border-white"
+          style={{ top: '50%', left: '83%', width: '17%' }}
+        ></div>
+
         {/* Vertical superior */}
         <div
           className="absolute border-l-4 border-white"
-          style={{ left: '50%', top: '0%', height: '25%' }}
+          style={{ left: '50%', top: '0%', height: '17%' }}
         ></div>
         <div
           className="absolute border-l-4 border-white"
-          style={{ left: '50%', top: '75%', height: '25%' }}
+          style={{ left: '50%', top: '17%', height: '17%' }}
+        ></div>
+
+        {/* Vertical inferior */}
+        <div
+          className="absolute border-l-4 border-white"
+          style={{ left: '50%', top: '66%', height: '17%' }}
+        ></div>
+        <div
+          className="absolute border-l-4 border-white"
+          style={{ left: '50%', top: '83%', height: '17%' }}
         ></div>
 
         {/* 24 pontos */}
