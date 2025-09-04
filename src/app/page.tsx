@@ -15,13 +15,13 @@ export default function Home() {
           <NavLink href={'/games/checkers'} status="Soon">
             Checkers
           </NavLink>
-          <NavLink href={'/games/mill'} status="Soon">
+          <NavLink href={'/games/mill'} status="In Progress">
             Mill
           </NavLink>
           <NavLink href={'/games/dotsandboxes'} status="Done">
             Dots and Boxes
           </NavLink>
-          <NavLink href={'/games/tictactoe'} status="In Progress">
+          <NavLink href={'/games/tictactoe'} status="Done">
             Tic Tac Toe
           </NavLink>
           <NavLink href={'/games/connectfour'} status="Soon">
