@@ -54,12 +54,32 @@ export default function MillBoard() {
         {/* Quadrados concêntricos */}
         <div className="absolute border-4 border-white inset-0"></div>
         <div
-          className="absolute border-4 border-white inset-0"
+          className="absolute border-4 border-white"
           style={{ inset: '12.5%' }}
         ></div>
         <div
           className="absolute border-4 border-white"
           style={{ inset: '25%' }}
+        ></div>
+
+        {/* Linhas de ligação (cantos ↔ cantos e meios ↔ meios) */}
+        {/* Horizontal esquerda */}
+        <div
+          className="absolute border-t-4 border-white"
+          style={{ top: '50%', left: '0%', width: '25%' }}
+        ></div>
+        <div
+          className="absolute border-t-4 border-white"
+          style={{ top: '50%', left: '75%', width: '25%' }}
+        ></div>
+        {/* Vertical superior */}
+        <div
+          className="absolute border-l-4 border-white"
+          style={{ left: '50%', top: '0%', height: '25%' }}
+        ></div>
+        <div
+          className="absolute border-l-4 border-white"
+          style={{ left: '50%', top: '75%', height: '25%' }}
         ></div>
       </div>
     </div>
