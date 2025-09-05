@@ -2,18 +2,20 @@
 import Score from '@/components/ui/Score';
 import { useState } from 'react';
 
+type Player = 1 | 2;
+
 export default function MillBoard() {
   const [positions, setPositions] = useState<(null | 'X' | 'O')[]>(
     Array(24).fill(null)
   );
-  const [player, setPlayer] = useState<'X' | 'O'>('X');
+  const [player, setPlayer] = useState<Player>(1);
 
   const handleClick = (i: number) => {
     if (positions[i]) return; // já ocupado
     const newPositions = [...positions];
     newPositions[i] = player;
     setPositions(newPositions);
-    setPlayer(player === 'X' ? 'O' : 'X');
+    setPlayer(player === 1 ? 2 : 1);
   };
 
   // Coordenadas dos 24 pontos
@@ -51,7 +53,7 @@ export default function MillBoard() {
 
   return (
     <div className="min-h-screen flex items-center justify-around bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 text-white p-6">
-      <Score player={player} points={0} />
+      <Score player="Player 1" points={0} />
       <div className="relative w-[600px] h-[600px] border-4 border-white">
         {/* Quadrados concêntricos */}
         <div className="absolute border-4 border-white inset-0"></div>
@@ -121,7 +123,7 @@ export default function MillBoard() {
           </div>
         ))}
       </div>
-      <Score player={player} points={0} />
+      <Score player="Player 2" points={0} />
     </div>
   );
 }
