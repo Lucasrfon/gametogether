@@ -5,7 +5,7 @@ import { useState } from 'react';
 type Player = 1 | 2;
 
 export default function MillBoard() {
-  const [positions, setPositions] = useState<(null | 'X' | 'O')[]>(
+  const [positions, setPositions] = useState<(null | 1 | 2)[]>(
     Array(24).fill(null)
   );
   const [player, setPlayer] = useState<Player>(1);
