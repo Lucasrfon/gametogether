@@ -1,4 +1,5 @@
 'use client';
+import Score from '@/components/ui/Score';
 import { useState } from 'react';
 
 export default function MillBoard() {
@@ -49,7 +50,8 @@ export default function MillBoard() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 text-white p-6">
+    <div className="min-h-screen flex items-center justify-around bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 text-white p-6">
+      <Score player={player} points={0} />
       <div className="relative w-[600px] h-[600px] border-4 border-white">
         {/* Quadrados concêntricos */}
         <div className="absolute border-4 border-white inset-0"></div>
@@ -119,6 +121,7 @@ export default function MillBoard() {
           </div>
         ))}
       </div>
+      <Score player={player} points={0} />
     </div>
   );
 }
