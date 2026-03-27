@@ -8,6 +8,7 @@ import {
 } from 'next/font/google';
 import './globals.css';
 import Header from '../components/Header';
+import ScreenGuard from '../components/ScreenGuard';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -52,9 +53,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${uncial.variable} ${roboto.variable} ${montserrat.variable} antialiased`}
       >
-        <Header />
-
-        {children}
+        <ScreenGuard>
+          <Header />
+          {children}
+        </ScreenGuard>
       </body>
     </html>
   );
