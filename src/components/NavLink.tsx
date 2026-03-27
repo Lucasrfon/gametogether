@@ -1,9 +1,10 @@
 'use client';
+import { GameStatus } from '@/data/games';
 import Link from 'next/link';
 
 type NavLinkProps = {
   href: string;
-  status: 'Done' | 'In Progress' | 'Soon';
+  status: GameStatus;
   children: React.ReactNode;
 };
 
