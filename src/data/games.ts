@@ -53,4 +53,11 @@ export const games: Game[] = [
     type: 'standard',
     status: 'Soon',
   },
+  {
+    name: 'Treinador Pokemon',
+    slug: 'treinadorpokemon',
+    category: 'board',
+    type: 'premium',
+    status: 'In Progress',
+  },
 ];

@@ -1,4 +1,4 @@
-import NavLink from '@/components/NavLink';
+import NavLink from '@/components/layout/NavLink';
 import { games } from '@/data/games';
 
 export default function Home() {
@@ -9,17 +9,35 @@ export default function Home() {
           Welcome to <span className="text-[#ac1717]">Game Together</span>
         </h1>
 
-        <ul className="font-roboto text-lg space-y-2 w-full max-w-md">
-          {games.map((game) => (
-            <NavLink
-              key={game.slug}
-              href={`/games/${game.slug}`}
-              status={game.status}
-            >
-              {game.name}
-            </NavLink>
-          ))}
-        </ul>
+        <div className="flex w-full gap-4">
+          <ul className="font-roboto text-lg space-y-2 w-full max-w-md">
+            {games.map((game) =>
+              game.type === 'standard' ? (
+                <NavLink
+                  key={game.slug}
+                  href={`/games/${game.slug}`}
+                  status={game.status}
+                >
+                  {game.name}
+                </NavLink>
+              ) : null
+            )}
+          </ul>
+
+          <ul className="font-roboto text-lg space-y-2 w-full max-w-md">
+            {games.map((game) =>
+              game.type === 'premium' ? (
+                <NavLink
+                  key={game.slug}
+                  href={`/games/${game.slug}`}
+                  status={game.status}
+                >
+                  {game.name}
+                </NavLink>
+              ) : null
+            )}
+          </ul>
+        </div>
       </main>
     </div>
   );

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
-import NotFoundImage from '@/components/assets/images/404.png';
+import NotFoundImage from '@/assets/images/404.png';
 
 export default function NotFound() {
   const [showEasterEgg, setShowEasterEgg] = useState(false);

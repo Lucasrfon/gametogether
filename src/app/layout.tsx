@@ -7,7 +7,7 @@ import {
   Uncial_Antiqua,
 } from 'next/font/google';
 import './globals.css';
-import Header from '../components/Header';
+import Header from '../components/layout/Header';
 import ScreenGuard from '../components/ScreenGuard';
 
 const geistSans = Geist({

@@ -1,5 +1,5 @@
 'use client';
-import Score from '@/components/ui/Score';
+import Score from '@/components/game/Score';
 import { useState } from 'react';
 
 type Player = 1 | 2;
